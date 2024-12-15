@@ -30,7 +30,7 @@ const greeting = {
     "Competitive Gamer 🎮",
   ],
   resumeLink:
-    "https://drive.google.com/file/d/1qOOg75bxtZolGlc4SPctWmKNncdfcgOU/view?usp=sharing",
+    "https://drive.google.com/file/d/1ULAb_6EW5ENbJKNNK1_QigKFdwg4FMp5/view?usp=drive_link",
   portfolio_repository: "https://github.com/Saikowshik007/portfolio-new",
   githubProfile: "https://github.com/Saikowshik007",
 };
