@@ -342,8 +342,8 @@ const certifications = {
       subtitle: "- HackerRank",
       logo_path: "hackerrank.png",
       certificate_link:
-        "https://drive.google.com/file/d/164zKCFOsI4vGqokc-Qj-e_D00kLDHIrG/view",
-      alt_name: "Microsoft",
+        "https://www.hackerrank.com/certificates/84612ed39039",
+      alt_name: "Hacker rank",
       color_code: "#D83B0199",
     },
     {
@@ -351,7 +351,7 @@ const certifications = {
       subtitle: "- HackerRank",
       logo_path: "hackerrank.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/BH2T9BRU87BH",
+        "https://www.hackerrank.com/certificates/17a9b3979fbb",
       alt_name: "IBM",
       color_code: "#1F70C199",
     },
@@ -360,16 +360,16 @@ const certifications = {
       subtitle: "- HackerRank",
       logo_path: "hackerrank.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/5JZZM7TNQ2AV",
+        "https://www.hackerrank.com/certificates/2534850ea350",
       alt_name: "Google",
       color_code: "#0C9D5899",
     },
     {
-      title: "Problem Solving (Intermediate)",
+      title: "Java (Intermediate)",
       subtitle: "- HackerRank",
       logo_path: "hackerrank.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/6T4DCUGNK8J8",
+        "https://www.hackerrank.com/certificates/9641d699bd0a",
       alt_name: "deeplearning.ai",
       color_code: "#00000099",
     },
