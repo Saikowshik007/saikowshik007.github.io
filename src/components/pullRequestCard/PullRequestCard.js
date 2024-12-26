@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./PullRequestCard.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Fade } from "react-reveal";
+import { Fade } from "react-awesome-reveal";
 
 class PullRequestCard extends Component {
   render() {

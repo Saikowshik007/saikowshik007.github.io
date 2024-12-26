@@ -1,6 +1,6 @@
 import React from "react";
 import "./PublicationCard.css";
-import { Fade } from "react-reveal";
+import { Fade } from "react-awesome-reveal";
 
 export default function PublicationCard({ pub, theme }) {
   function openPubinNewTab(url) {

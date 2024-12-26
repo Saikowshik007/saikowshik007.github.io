@@ -1,8 +1,15 @@
 .degree-card {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  max-width: 1200px; /* Added max-width for larger screens */
+  margin: 2rem auto; /* Center the card with margin */
+  padding: 1.5rem; /* Added padding for content spacing */
+  justify-content: space-between; /* Changed from center to space-between */
+  align-items: flex-start; /* Changed from center to flex-start */
+  gap: 2rem; /* Added gap between elements */
+  background: #ffffff; /* Optional: added background */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
 
 .card-title {
@@ -79,6 +86,8 @@
   border-radius: 7px;
   margin: 10px;
   box-shadow: 5px 5px 5px #d9dbdf;
+  flex: 1;
+  min-width: 0;
 }
 
 .visit-btn {
@@ -103,11 +112,18 @@
 }
 
 @media (max-width: 1380px) {
+  .degree-card {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .degree-card {
     flex-direction: column;
+    align-items: center; /* Center items when stacked */
+    text-align: center; /* Center text on mobile */
+    gap: 1rem;
   }
 
   .body-header {

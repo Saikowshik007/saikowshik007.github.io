@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./DegreeCard.css";
-import { Fade, Flip } from "react-reveal";
+import { Fade, Flip } from "react-awesome-reveal";
 
 class DegreeCard extends Component {
   render() {
@@ -26,7 +26,7 @@ class DegreeCard extends Component {
         <Fade right duration={2000} distance="40px">
           <div
             className="card-body"
-            style={{ width: degree.logo_path ? "90%" : "100%" }}
+            style={{ width: degree.logo_path ? "100%" : "100%" }}
           >
             <div
               className="body-header"

@@ -1,14 +1,13 @@
 .cert-card {
-  width: 30%;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex: 0 0 calc(30% - 2rem); /* Takes up 30% width with gap consideration */
+  min-width: 400px; /* Minimum width to prevent too narrow cards */
+  margin: 1rem; /* Even spacing around cards */
   border: 1px solid #d9dbdf;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #d9dbdf;
-  margin-bottom: 30px;
-  flex: 0 0 30%;
+  display: flex; /* Changed from inline-block to flex */
+  flex-direction: column; /* Stack content vertically */
+  overflow: hidden; /* Prevent content overflow */
 }
 
 .cert-header {
@@ -102,10 +101,14 @@
 }
 
 @media (max-width: 1380px) {
+  .cert-card {
+    flex: 0 0 calc(45% - 2rem); /* Larger percentage on medium screens */
+  }
 }
 
 @media (max-width: 768px) {
   .cert-card {
-    width: 100%;
+    flex: 0 0 calc(100% - 2rem); /* Full width on mobile */
+    max-width: 100%; /* Allow full width on mobile */
   }
 }
