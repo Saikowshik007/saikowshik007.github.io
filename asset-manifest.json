@@ -5,10 +5,10 @@
     "main.js.map": "./static/js/main.80630a44.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.17f79616.js",
     "runtime-main.js.map": "./static/js/runtime-main.17f79616.js.map",
-    "static/js/2.77099d3e.chunk.js": "./static/js/2.77099d3e.chunk.js",
-    "static/js/2.77099d3e.chunk.js.map": "./static/js/2.77099d3e.chunk.js.map",
+    "static/js/2.dada8962.chunk.js": "./static/js/2.dada8962.chunk.js",
+    "static/js/2.dada8962.chunk.js.map": "./static/js/2.dada8962.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.001143d15fef413039fea42e1450a76b.js": "./precache-manifest.001143d15fef413039fea42e1450a76b.js",
+    "precache-manifest.37461b97b506c46c647bbd164053a4a8.js": "./precache-manifest.37461b97b506c46c647bbd164053a4a8.js",
     "service-worker.js": "./service-worker.js",
     "static/css/main.817a1abf.chunk.css.map": "./static/css/main.817a1abf.chunk.css.map",
     "static/media/index.css": "./static/media/NewAmsterdam-Regular.f69c54df.ttf",
@@ -60,7 +60,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.17f79616.js",
-    "static/js/2.77099d3e.chunk.js",
+    "static/js/2.dada8962.chunk.js",
     "static/css/main.817a1abf.chunk.css",
     "static/js/main.80630a44.chunk.js"
   ]
