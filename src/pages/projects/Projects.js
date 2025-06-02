@@ -10,7 +10,7 @@ import {
   greeting,
   projectsHeader,
   publicationsHeader,
-  publications, projects, waitForDataLoad
+  publications, projects
 } from "../../portfolio.js";
 import "./Projects.css";
 import ProjectsImg from "./ProjectsImg";
