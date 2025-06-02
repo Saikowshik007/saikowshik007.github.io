@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "./static/css/main.8724cdd2.chunk.css",
-    "main.js": "./static/js/main.b2cc046a.chunk.js",
-    "main.js.map": "./static/js/main.b2cc046a.chunk.js.map",
+    "main.css": "./static/css/main.5156af60.chunk.css",
+    "main.js": "./static/js/main.64d5b3db.chunk.js",
+    "main.js.map": "./static/js/main.64d5b3db.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.17f79616.js",
     "runtime-main.js.map": "./static/js/runtime-main.17f79616.js.map",
-    "static/js/2.e5e706d3.chunk.js": "./static/js/2.e5e706d3.chunk.js",
-    "static/js/2.e5e706d3.chunk.js.map": "./static/js/2.e5e706d3.chunk.js.map",
+    "static/js/2.45ba46f1.chunk.js": "./static/js/2.45ba46f1.chunk.js",
+    "static/js/2.45ba46f1.chunk.js.map": "./static/js/2.45ba46f1.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.903bfa09e1da40c239415bc7e78a6387.js": "./precache-manifest.903bfa09e1da40c239415bc7e78a6387.js",
+    "precache-manifest.2ee9ec178a52c420ec0718b73ecbfb6b.js": "./precache-manifest.2ee9ec178a52c420ec0718b73ecbfb6b.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/main.8724cdd2.chunk.css.map": "./static/css/main.8724cdd2.chunk.css.map",
+    "static/css/main.5156af60.chunk.css.map": "./static/css/main.5156af60.chunk.css.map",
     "static/media/index.css": "./static/media/NewAmsterdam-Regular.f69c54df.ttf",
     "static/media/address_image.svg": "./static/media/address_image.16559172.svg",
     "static/media/animated_logo.svg": "./static/media/animated_logo.dcd6dee2.svg",
     "static/media/blogs_image.svg": "./static/media/blogs_image.058eca4c.svg",
-    "static/media/cloud_infrastructure.svg": "./static/media/cloud_infrastructure.b8006bd6.svg",
+    "static/media/cloud_infrastructure.svg": "./static/media/cloud_infrastructure.143091eb.svg",
     "static/media/codeInLogo.png": "./static/media/codeInLogo.fee92c18.png",
     "static/media/contactMail.png": "./static/media/contactMail.5f915405.png",
     "static/media/data_science.svg": "./static/media/data_science.ebf35d7f.svg",
@@ -60,8 +60,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.17f79616.js",
-    "static/js/2.e5e706d3.chunk.js",
-    "static/css/main.8724cdd2.chunk.css",
-    "static/js/main.b2cc046a.chunk.js"
+    "static/js/2.45ba46f1.chunk.js",
+    "static/css/main.5156af60.chunk.css",
+    "static/js/main.64d5b3db.chunk.js"
   ]
 }
