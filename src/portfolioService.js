@@ -1,4 +1,4 @@
-// portfolioService.js
+// portfolioService.js - Updated with Projects method
 import { db } from './firebaseConfig';
 import { doc, getDoc, collection, getDocs, orderBy, query } from 'firebase/firestore';
 
@@ -370,6 +370,35 @@ class PortfolioService {
         });
     }
 
+    // NEW: ADD THE MISSING PROJECTS METHOD
+    async getProjects() {
+        return this.getFromCacheOrFetch('projects', async () => {
+            try {
+                const querySnapshot = await getDocs(
+                    query(collection(db, 'projects'), orderBy('order', 'asc'))
+                );
+
+                const projectsData = [];
+                querySnapshot.forEach((doc) => {
+                    const project = { id: doc.id, ...doc.data() };
+
+                    // Convert Firestore timestamp to Date if needed
+                    if (project.createdAt && typeof project.createdAt.toDate === 'function') {
+                        project.createdAt = project.createdAt.toDate().toISOString();
+                    }
+
+                    projectsData.push(project);
+                });
+
+                console.log('📦 Projects loaded from Firebase:', projectsData.length, 'projects');
+                return { data: projectsData };
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+                return { data: [] };
+            }
+        });
+    }
+
     async getPublications() {
         return this.getFromCacheOrFetch('publications', async () => {
             try {
@@ -423,6 +452,7 @@ class PortfolioService {
                 experience,
                 projectsHeader,
                 publicationsHeader,
+                projects,  // NOW INCLUDED!
                 publications,
                 contactPageData
             ] = await Promise.all([
@@ -437,6 +467,7 @@ class PortfolioService {
                 this.getExperience(),
                 this.getProjectsHeader(),
                 this.getPublicationsHeader(),
+                this.getProjects(),  // NOW INCLUDED!
                 this.getPublications(),
                 this.getContactPageData()
             ]);
@@ -453,6 +484,7 @@ class PortfolioService {
                 experience,
                 projectsHeader,
                 publicationsHeader,
+                projects,  // NOW INCLUDED!
                 publications,
                 contactPageData
             };
