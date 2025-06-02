@@ -10,14 +10,14 @@ import {
   greeting,
   projectsHeader,
   publicationsHeader,
-  publications,
+  publications, projects, waitForDataLoad
 } from "../../portfolio.js";
-import ProjectsData from "../../shared/opensource/projects.json";
 import "./Projects.css";
 import ProjectsImg from "./ProjectsImg";
 
 class Projects extends Component {
   render() {
+      const ProjectsData = projects.data;
     const theme = this.props.theme;
     return (
       <div className="projects-main">

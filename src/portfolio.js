@@ -1,149 +1,192 @@
-// portfolio.js - Direct assignment approach (maintains existing import structure)
+// portfolio.js - Safe version with better null checking
 import PortfolioService from './portfolioService';
 
-// Initialize the service (no parameters needed now)
+// Initialize the service
 const portfolioService = new PortfolioService();
 
-// Variables that will hold the data (same names as your original exports)
-// Initialize with safe default values to prevent null reference errors
-let settings = { isSplash: false };
-let seo = { title: "Portfolio", description: "", og: { title: "Portfolio", type: "website", url: "" } };
-let greeting = { title: "", nickname: "", runnerText: [], resumeLink: "" };
-let socialMediaLinks = [];
-let skills = { data: [] };
-let competitiveSites = { competitiveSites: [] };
-let degrees = { degrees: [] };
-let certifications = { certifications: [] };
-let experience = { title: "", subtitle: "", description: [], sections: [] };
-let projectsHeader = { title: "", description: "" };
-let publicationsHeader = { title: "", description: "" };
-let publications = { data: [] };
-let contactPageData = {
-  contactSection: {
-    title: "",
-    profile_image_path: "",
-    description: ""
+// Create reactive data objects
+let portfolioData = {
+  settings: { isSplash: false },
+  seo: {
+    title: "Portfolio",
+    description: "Personal Portfolio Website",
+    og: { title: "Portfolio", type: "website", url: "" }
   },
-  addressSection: {
+  greeting: {
     title: "",
+    logo_name: "",
+    nickname: "",
+    runnerText: [],
+    resumeLink: "",
+    portfolio_repository: "",
+    githubProfile: ""
+  },
+  socialMediaLinks: [],
+  skills: { data: [] },
+  competitiveSites: { competitiveSites: [] },
+  degrees: { degrees: [] },
+  certifications: { certifications: [] },
+  experience: {
+    title: "Experience",
     subtitle: "",
-    locality: "",
-    country: "",
-    region: "",
-    postalCode: "",
-    streetAddress: "",
-    avatar_image_path: "",
-    location_map_link: ""
+    description: [],
+    sections: [],
+    header_image_path: ""
   },
-  phoneSection: {
-    title: "",
-    subtitle: ""
+  projectsHeader: {
+    title: "Projects",
+    description: "",
+    avatar_image_path: ""
+  },
+  publicationsHeader: {
+    title: "Publications",
+    description: "",
+    avatar_image_path: ""
+  },
+  publications: { data: [] },
+  projects: { data: [] },
+  contactPageData: {
+    contactSection: {
+      title: "Contact Me",
+      profile_image_path: "",
+      description: ""
+    },
+    addressSection: {
+      title: "Address",
+      subtitle: "",
+      locality: "",
+      country: "",
+      region: "",
+      postalCode: "",
+      streetAddress: "",
+      avatar_image_path: "",
+      location_map_link: ""
+    },
+    phoneSection: {
+      title: "",
+      subtitle: ""
+    }
   }
 };
 
 // Loading state
 let isDataLoaded = false;
-let isLoading = false;
 let loadingPromise = null;
 
-// Initialize all data at module load
+// Initialize data loading
 const initializeData = async () => {
-  if (isLoading) {
+  if (loadingPromise) {
     return loadingPromise;
   }
-
-  if (isDataLoaded) {
-    return;
-  }
-
-  isLoading = true;
 
   loadingPromise = (async () => {
     try {
       console.log('Loading portfolio data from Firebase...');
-
       const data = await portfolioService.getAllPortfolioData();
 
-      // Update the existing objects instead of reassigning
-      // This preserves references while updating content
-      Object.assign(settings, data.settings);
-      Object.assign(seo, data.seo);
-      Object.assign(greeting, data.greeting);
-      Object.assign(skills, data.skills);
-      Object.assign(competitiveSites, data.competitiveSites);
-      Object.assign(degrees, data.degrees);
-      Object.assign(certifications, data.certifications);
-      Object.assign(experience, data.experience);
-      Object.assign(projectsHeader, data.projectsHeader);
-      Object.assign(publicationsHeader, data.publicationsHeader);
-      Object.assign(publications, data.publications);
-      Object.assign(contactPageData, data.contactPageData);
+      // Safely update each piece of data
+      if (data.settings) {
+        Object.assign(portfolioData.settings, data.settings);
+      }
 
-      // For arrays, replace the contents
-      socialMediaLinks.length = 0;
-      socialMediaLinks.push(...data.socialMediaLinks);
+      if (data.seo) {
+        Object.assign(portfolioData.seo, data.seo);
+      }
+
+      if (data.greeting) {
+        Object.assign(portfolioData.greeting, data.greeting);
+      }
+
+      if (data.skills) {
+        Object.assign(portfolioData.skills, data.skills);
+      }
+
+      if (data.competitiveSites) {
+        Object.assign(portfolioData.competitiveSites, data.competitiveSites);
+      }
+
+      if (data.degrees) {
+        Object.assign(portfolioData.degrees, data.degrees);
+      }
+
+      if (data.certifications) {
+        Object.assign(portfolioData.certifications, data.certifications);
+      }
+
+      if (data.experience) {
+        Object.assign(portfolioData.experience, data.experience);
+      }
+
+      if (data.projectsHeader) {
+        Object.assign(portfolioData.projectsHeader, data.projectsHeader);
+      }
+
+      if (data.publicationsHeader) {
+        Object.assign(portfolioData.publicationsHeader, data.publicationsHeader);
+      }
+
+      if (data.publications) {
+        Object.assign(portfolioData.publications, data.publications);
+      }
+
+      if (data.projects) {
+        Object.assign(portfolioData.projects, data.projects);
+      }
+
+      if (data.contactPageData) {
+        Object.assign(portfolioData.contactPageData, data.contactPageData);
+      }
+
+      // Handle social media links array
+      if (data.socialMediaLinks && Array.isArray(data.socialMediaLinks)) {
+        portfolioData.socialMediaLinks.length = 0;
+        portfolioData.socialMediaLinks.push(...data.socialMediaLinks);
+      }
 
       isDataLoaded = true;
       console.log('Portfolio data loaded successfully');
 
-      // Trigger a re-render if in React environment
-      if (typeof window !== 'undefined' && window.portfolioDataLoaded) {
-        window.portfolioDataLoaded();
+      // Force React re-render by dispatching a custom event
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('portfolioDataLoaded'));
       }
 
     } catch (error) {
       console.error('Error loading portfolio data:', error);
-      // Keep the default values that were already set
-    } finally {
-      isLoading = false;
+      // Keep default values on error
     }
+
+    return portfolioData;
   })();
 
   return loadingPromise;
 };
 
-// Auto-initialize when module is imported
+// Start loading immediately
 initializeData();
 
-// Getter functions that ensure data is loaded before returning
-const ensureDataLoaded = async () => {
-  if (!isDataLoaded && !isLoading) {
-    await initializeData();
-  } else if (isLoading) {
-    await loadingPromise;
-  }
-};
+// Export direct references to the data objects
+export const settings = portfolioData.settings;
+export const seo = portfolioData.seo;
+export const greeting = portfolioData.greeting;
+export const socialMediaLinks = portfolioData.socialMediaLinks;
+export const skills = portfolioData.skills;
+export const competitiveSites = portfolioData.competitiveSites;
+export const degrees = portfolioData.degrees;
+export const certifications = portfolioData.certifications;
+export const experience = portfolioData.experience;
+export const projectsHeader = portfolioData.projectsHeader;
+export const publicationsHeader = portfolioData.publicationsHeader;
+export const publications = portfolioData.publications;
+export const projects = portfolioData.projects;
+export const contactPageData = portfolioData.contactPageData;
 
-// Export the same variable names as your original file
-// These are now initialized with safe defaults and will be updated when Firebase loads
-export {
-  settings,
-  seo,
-  greeting,
-  socialMediaLinks,
-  skills,
-  competitiveSites,
-  degrees,
-  certifications,
-  experience,
-  projectsHeader,
-  publicationsHeader,
-  publications,
-  contactPageData
-};
-
-// Helper function to wait for data to be loaded (optional, for components that need to wait)
-export const waitForDataLoad = () => ensureDataLoaded();
-
-// Function to manually refresh all data
+// Helper functions
+export const waitForDataLoad = () => loadingPromise;
+export const isPortfolioDataLoaded = () => isDataLoaded;
 export const refreshPortfolioData = async () => {
   isDataLoaded = false;
+  loadingPromise = null;
   portfolioService.clearCache();
-  await initializeData();
+  return initializeData();
 };
-
-// Helper to check if data is loaded
-export const isPortfolioDataLoaded = () => isDataLoaded;
-
-// Helper to get loading promise
-export const getLoadingPromise = () => loadingPromise;
