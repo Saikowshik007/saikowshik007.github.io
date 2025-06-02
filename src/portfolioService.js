@@ -1,12 +1,84 @@
+// portfolioService.js
 import { db } from './firebaseConfig';
 import { doc, getDoc, collection, getDocs, orderBy, query } from 'firebase/firestore';
 
+class GoogleDriveService {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.baseUrl = 'https://www.googleapis.com/drive/v3';
+    }
+
+    async getResumeLink(folderId) {
+        try {
+            const response = await fetch(
+                `${this.baseUrl}/files?q='${folderId}'+in+parents+and+mimeType='application/pdf'&key=${this.apiKey}`
+            );
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch resume from Google Drive');
+            }
+
+            const data = await response.json();
+
+            if (data.files && data.files.length > 0) {
+                const resumeFile = data.files[0];
+                return `https://drive.google.com/file/d/${resumeFile.id}/view`;
+            }
+
+            return null;
+        } catch (error) {
+            console.error('Error fetching resume from Google Drive:', error);
+            return null;
+        }
+    }
+
+    async getResumeDownloadLink(folderId) {
+        try {
+            const response = await fetch(
+                `${this.baseUrl}/files?q='${folderId}'+in+parents+and+mimeType='application/pdf'&key=${this.apiKey}`
+            );
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch resume from Google Drive');
+            }
+
+            const data = await response.json();
+
+            if (data.files && data.files.length > 0) {
+                const resumeFile = data.files[0];
+                return `${this.baseUrl}/files/${resumeFile.id}?alt=media&key=${this.apiKey}`;
+            }
+
+            return null;
+        } catch (error) {
+            console.error('Error fetching resume download link from Google Drive:', error);
+            return null;
+        }
+    }
+}
+
 class PortfolioService {
-    constructor(googleDriveApiKey, resumeFolderId) {
-        this.googleDriveService = new GoogleDriveService(googleDriveApiKey);
-        this.resumeFolderId = resumeFolderId;
+    constructor() {
+        this.googleDriveService = null;
+        this.driveConfig = null;
         this.cache = new Map();
         this.cacheExpiry = 5 * 60 * 1000; // 5 minutes
+    }
+
+    async initializeGoogleDrive() {
+        if (!this.driveConfig) {
+            try {
+                const docRef = doc(db, 'portfolio', 'driveConfig');
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    this.driveConfig = docSnap.data();
+                    this.googleDriveService = new GoogleDriveService(this.driveConfig.apiKey);
+                }
+            } catch (error) {
+                console.error('Error fetching Google Drive config:', error);
+            }
+        }
     }
 
     async getFromCacheOrFetch(key, fetchFunction) {
@@ -79,16 +151,21 @@ class PortfolioService {
     async getGreeting() {
         return this.getFromCacheOrFetch('greeting', async () => {
             try {
+                // Initialize Google Drive if not already done
+                await this.initializeGoogleDrive();
+
                 const docRef = doc(db, 'portfolio', 'greeting');
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
                     const greetingData = docSnap.data();
 
-                    // Get resume link from Google Drive
-                    const resumeLink = await this.googleDriveService.getResumeLink(this.resumeFolderId);
-                    if (resumeLink) {
-                        greetingData.resumeLink = resumeLink;
+                    // Get resume link from Google Drive using config from Firebase
+                    if (this.googleDriveService && this.driveConfig && this.driveConfig.resumeFolderId) {
+                        const resumeLink = await this.googleDriveService.getResumeLink(this.driveConfig.resumeFolderId);
+                        if (resumeLink) {
+                            greetingData.resumeLink = resumeLink;
+                        }
                     }
 
                     return greetingData;
