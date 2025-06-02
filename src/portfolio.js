@@ -1,3 +1,5 @@
+import PortfolioService from "./portfolioService";
+
 const portfolioService = new PortfolioService();
 
 // Variables that will hold the data (same names as your original exports)
