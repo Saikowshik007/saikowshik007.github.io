@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0eda6586a9030eb69cfdc3dce8958fdc",
+    "revision": "4360fc47243fd5bc6522a40783babd25",
     "url": "./index.html"
   },
   {
-    "revision": "8cbc49cd5d4cfaed319b",
+    "revision": "16347872105002eab42f",
     "url": "./static/css/main.5156af60.chunk.css"
   },
   {
-    "revision": "90a5db358d871f3a2376",
-    "url": "./static/js/2.dfb417da.chunk.js"
+    "revision": "c0e8f0d928fd1f1c452b",
+    "url": "./static/js/2.02983aac.chunk.js"
   },
   {
-    "revision": "8cbc49cd5d4cfaed319b",
-    "url": "./static/js/main.191a3685.chunk.js"
+    "revision": "16347872105002eab42f",
+    "url": "./static/js/main.d1f9f1bf.chunk.js"
   },
   {
     "revision": "6f27e27628ba93d0fbfa",
@@ -62,6 +62,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "dcd6dee2bd7458a4a576dc131506fd83",
     "url": "./static/media/animated_logo.dcd6dee2.svg"
+  },
+  {
+    "revision": "05908661687ec1d69cd68f59b119c260",
+    "url": "./static/media/aws_logo.05908661.png"
   },
   {
     "revision": "058eca4cbdc03a1dad9a6bb943ac7831",
@@ -222,6 +226,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5b4a6449747ec61a6d9aa874f2a9ceba",
     "url": "./static/media/jsFramework.5b4a6449.svg"
+  },
+  {
+    "revision": "7f8da45db810ed6feb8dfe889898a6d3",
+    "url": "./static/media/kubernetes_logo.7f8da45d.png"
   },
   {
     "revision": "c597fbded5de799dfb9abc3fc4f1c26f",
