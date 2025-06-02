@@ -1,21 +1,45 @@
-import PortfolioService from "./portfolioService";
+// portfolio.js - Direct assignment approach (maintains existing import structure)
+import PortfolioService from './portfolioService';
 
+// Initialize the service (no parameters needed now)
 const portfolioService = new PortfolioService();
 
 // Variables that will hold the data (same names as your original exports)
-let settings = null;
-let seo = null;
-let greeting = null;
-let socialMediaLinks = null;
-let skills = null;
-let competitiveSites = null;
-let degrees = null;
-let certifications = null;
-let experience = null;
-let projectsHeader = null;
-let publicationsHeader = null;
-let publications = null;
-let contactPageData = null;
+// Initialize with safe default values to prevent null reference errors
+let settings = { isSplash: false };
+let seo = { title: "Portfolio", description: "", og: { title: "Portfolio", type: "website", url: "" } };
+let greeting = { title: "", nickname: "", runnerText: [], resumeLink: "" };
+let socialMediaLinks = [];
+let skills = { data: [] };
+let competitiveSites = { competitiveSites: [] };
+let degrees = { degrees: [] };
+let certifications = { certifications: [] };
+let experience = { title: "", subtitle: "", description: [], sections: [] };
+let projectsHeader = { title: "", description: "" };
+let publicationsHeader = { title: "", description: "" };
+let publications = { data: [] };
+let contactPageData = {
+  contactSection: {
+    title: "",
+    profile_image_path: "",
+    description: ""
+  },
+  addressSection: {
+    title: "",
+    subtitle: "",
+    locality: "",
+    country: "",
+    region: "",
+    postalCode: "",
+    streetAddress: "",
+    avatar_image_path: "",
+    location_map_link: ""
+  },
+  phoneSection: {
+    title: "",
+    subtitle: ""
+  }
+};
 
 // Loading state
 let isDataLoaded = false;
@@ -40,41 +64,36 @@ const initializeData = async () => {
 
       const data = await portfolioService.getAllPortfolioData();
 
-      // Assign to module-level variables with exact same names
-      settings = data.settings;
-      seo = data.seo;
-      greeting = data.greeting;
-      socialMediaLinks = data.socialMediaLinks;
-      skills = data.skills;
-      competitiveSites = data.competitiveSites;
-      degrees = data.degrees;
-      certifications = data.certifications;
-      experience = data.experience;
-      projectsHeader = data.projectsHeader;
-      publicationsHeader = data.publicationsHeader;
-      publications = data.publications;
-      contactPageData = data.contactPageData;
+      // Update the existing objects instead of reassigning
+      // This preserves references while updating content
+      Object.assign(settings, data.settings);
+      Object.assign(seo, data.seo);
+      Object.assign(greeting, data.greeting);
+      Object.assign(skills, data.skills);
+      Object.assign(competitiveSites, data.competitiveSites);
+      Object.assign(degrees, data.degrees);
+      Object.assign(certifications, data.certifications);
+      Object.assign(experience, data.experience);
+      Object.assign(projectsHeader, data.projectsHeader);
+      Object.assign(publicationsHeader, data.publicationsHeader);
+      Object.assign(publications, data.publications);
+      Object.assign(contactPageData, data.contactPageData);
+
+      // For arrays, replace the contents
+      socialMediaLinks.length = 0;
+      socialMediaLinks.push(...data.socialMediaLinks);
 
       isDataLoaded = true;
       console.log('Portfolio data loaded successfully');
 
+      // Trigger a re-render if in React environment
+      if (typeof window !== 'undefined' && window.portfolioDataLoaded) {
+        window.portfolioDataLoaded();
+      }
+
     } catch (error) {
       console.error('Error loading portfolio data:', error);
-
-      // Set fallback default values to prevent crashes
-      settings = { isSplash: false };
-      seo = { title: "Portfolio", description: "", og: { title: "Portfolio", type: "website", url: "" } };
-      greeting = { title: "", nickname: "", runnerText: [] };
-      socialMediaLinks = [];
-      skills = { data: [] };
-      competitiveSites = { competitiveSites: [] };
-      degrees = { degrees: [] };
-      certifications = { certifications: [] };
-      experience = { title: "", subtitle: "", description: [], sections: [] };
-      projectsHeader = { title: "", description: "" };
-      publicationsHeader = { title: "", description: "" };
-      publications = { data: [] };
-      contactPageData = { contactSection: {}, addressSection: {}, phoneSection: {} };
+      // Keep the default values that were already set
     } finally {
       isLoading = false;
     }
@@ -95,6 +114,8 @@ const ensureDataLoaded = async () => {
   }
 };
 
+// Export the same variable names as your original file
+// These are now initialized with safe defaults and will be updated when Firebase loads
 export {
   settings,
   seo,
@@ -114,8 +135,15 @@ export {
 // Helper function to wait for data to be loaded (optional, for components that need to wait)
 export const waitForDataLoad = () => ensureDataLoaded();
 
+// Function to manually refresh all data
 export const refreshPortfolioData = async () => {
   isDataLoaded = false;
   portfolioService.clearCache();
   await initializeData();
 };
+
+// Helper to check if data is loaded
+export const isPortfolioDataLoaded = () => isDataLoaded;
+
+// Helper to get loading promise
+export const getLoadingPromise = () => loadingPromise;
