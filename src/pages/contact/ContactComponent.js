@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import TopButton from "../../components/topButton/TopButton";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import Button from "../../components/button/Button";
 import AddressImg from "./AddressImg";
@@ -62,7 +60,6 @@ class Contact extends Component {
 
     return (
         <div className="contact-main">
-          <Header theme={theme} />
           <div className="basic-contact">
             <Fade bottom duration={1000} distance="40px">
               <div className="contact-heading-div">
@@ -153,7 +150,6 @@ class Contact extends Component {
             </Fade>
           </div>
           <Footer theme={this.props.theme} onToggle={this.props.onToggle} />
-          <TopButton theme={this.props.theme} />
         </div>
     );
   }
