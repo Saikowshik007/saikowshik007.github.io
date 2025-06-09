@@ -1,6 +1,35 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { waitForDataLoad, isPortfolioDataLoaded } from './portfolio';
 
+// Add Chart.js registration to fix the "arc" error
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    PointElement,
+    LineElement,
+    Filler
+} from 'chart.js';
+
+// Register all Chart.js components
+ChartJS.register(
+    ArcElement,        // For pie/doughnut charts
+    Tooltip,
+    Legend,
+    CategoryScale,     // For bar/line charts
+    LinearScale,       // For bar/line charts
+    BarElement,        // For bar charts
+    Title,
+    PointElement,      // For line charts
+    LineElement,       // For line charts
+    Filler             // For area charts
+);
+
 const PortfolioDataContext = createContext();
 
 export const usePortfolioData = () => {
@@ -51,7 +80,11 @@ export const PortfolioDataProvider = ({ children }) => {
                     borderRadius: '50%',
                     animation: 'spin 2s linear infinite'
                 }}></div>
-                <p style={{ marginTop: '20px', fontSize: '16px', color: '#666' }}>
+                <p style={{
+                    marginTop: '20px',
+                    fontSize: '16px',
+                    color: '#666'
+                }}>
                     Loading Portfolio Data...
                 </p>
                 <style jsx>{`
