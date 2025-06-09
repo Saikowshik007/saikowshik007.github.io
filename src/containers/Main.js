@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import "./Main.css"; // Add this line to import the CSS
 import Home from "../pages/home/HomeComponent";
 import Splash from "../pages/splash/Splash";
 import Education from "../pages/education/EducationComponent";
@@ -8,69 +8,48 @@ import Opensource from "../pages/opensource/Opensource";
 import Contact from "../pages/contact/ContactComponent";
 import Projects from "../pages/projects/Projects";
 import { settings } from "../portfolio.js";
-import Error404 from "../pages/errors/error404/Error";
 
 export default class Main extends Component {
-  render() {
-    return (
-      <BrowserRouter basename="/">
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={(props) =>
-              settings.isSplash ? (
-                <Splash {...props} theme={this.props.theme} />
-              ) : (
-                <Home {...props} theme={this.props.theme} />
-              )
-            }
-          />
-          <Route
-            path="/home"
-            render={(props) => <Home {...props} theme={this.props.theme} />}
-          />
-          <Route
-            path="/experience"
-            exact
-            render={(props) => (
-              <Experience {...props} theme={this.props.theme} />
-            )}
-          />
-          <Route
-            path="/education"
-            render={(props) => (
-              <Education {...props} theme={this.props.theme} />
-            )}
-          />
-          <Route
-            path="/opensource"
-            render={(props) => (
-              <Opensource {...props} theme={this.props.theme} />
-            )}
-          />
-          <Route
-            path="/contact"
-            render={(props) => <Contact {...props} theme={this.props.theme} />}
-          />
+    render() {
+        return (
+            <div className="single-page-container">
+                {/* Splash section - only show if enabled in settings */}
+                {settings.isSplash && (
+                    <section id="splash" className="page-section">
+                        <Splash theme={this.props.theme} />
+                    </section>
+                )}
 
-          {settings.isSplash && (
-            <Route
-              path="/splash"
-              render={(props) => <Splash {...props} theme={this.props.theme} />}
-            />
-          )}
+                {/* Home section */}
+                <section id="home" className="page-section">
+                    <Home theme={this.props.theme} />
+                </section>
 
-          <Route
-            path="/projects"
-            render={(props) => <Projects {...props} theme={this.props.theme} />}
-          />
-          <Route
-            path="*"
-            render={(props) => <Error404 {...props} theme={this.props.theme} />}
-          />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
+                {/* Experience section */}
+                <section id="experience" className="page-section">
+                    <Experience theme={this.props.theme} />
+                </section>
+
+                {/* Education section */}
+                <section id="education" className="page-section">
+                    <Education theme={this.props.theme} />
+                </section>
+
+                {/* Projects section */}
+                <section id="projects" className="page-section">
+                    <Projects theme={this.props.theme} />
+                </section>
+
+                {/* Open Source section */}
+                <section id="opensource" className="page-section">
+                    <Opensource theme={this.props.theme} />
+                </section>
+
+                {/* Contact section */}
+                <section id="contact" className="page-section">
+                    <Contact theme={this.props.theme} />
+                </section>
+            </div>
+        );
+    }
 }

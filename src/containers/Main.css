@@ -1,0 +1,51 @@
+/* Single Page Layout Styles */
+.single-page-container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.page-section {
+    width: 100%;
+    min-height: 100vh; /* Each section takes at least full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Optional: Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: If you want to add navigation dots or smooth scroll to sections */
+.section-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.section-nav a {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 10px 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.section-nav a:hover,
+.section-nav a.active {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.2);
+}
+
+/* Ensure sections don't have conflicting positioning */
+.page-section > * {
+    position: relative;
+}
