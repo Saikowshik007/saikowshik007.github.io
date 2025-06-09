@@ -14,6 +14,7 @@ import {
 } from "../../portfolio.js";
 import "./Projects.css";
 import ProjectsImg from "./ProjectsImg";
+import Button from "../../components/button/Button";
 
 class Projects extends Component {
     constructor(props) {
