@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "./static/css/main.1fea686a.chunk.css",
-    "main.js": "./static/js/main.61f9133e.chunk.js",
-    "main.js.map": "./static/js/main.61f9133e.chunk.js.map",
+    "main.js": "./static/js/main.570c9393.chunk.js",
+    "main.js.map": "./static/js/main.570c9393.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.17f79616.js",
     "runtime-main.js.map": "./static/js/runtime-main.17f79616.js.map",
     "static/js/2.3a7bdaee.chunk.js": "./static/js/2.3a7bdaee.chunk.js",
     "static/js/2.3a7bdaee.chunk.js.map": "./static/js/2.3a7bdaee.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.5bb101f7b9c31904dc054ba7139d1702.js": "./precache-manifest.5bb101f7b9c31904dc054ba7139d1702.js",
+    "precache-manifest.1f6a0c4867a4818a523f913b0586bab9.js": "./precache-manifest.1f6a0c4867a4818a523f913b0586bab9.js",
     "service-worker.js": "./service-worker.js",
     "static/css/main.1fea686a.chunk.css.map": "./static/css/main.1fea686a.chunk.css.map",
     "static/media/index.css": "./static/media/NewAmsterdam-Regular.f69c54df.ttf",
@@ -64,6 +64,6 @@
     "static/js/runtime-main.17f79616.js",
     "static/js/2.3a7bdaee.chunk.js",
     "static/css/main.1fea686a.chunk.css",
-    "static/js/main.61f9133e.chunk.js"
+    "static/js/main.570c9393.chunk.js"
   ]
 }
