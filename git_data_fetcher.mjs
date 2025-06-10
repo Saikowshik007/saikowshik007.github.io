@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const openSource = {
-  githubConvertedToken: "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",
+  githubConvertedToken: "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",
   githubUserName: "Saikowshik007",
 };
 
