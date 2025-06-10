@@ -2,24 +2,15 @@
   "data": [
     {
       "id": "MDEwOlJlcG9zaXRvcnkyNDQzMzM2MjM=",
-      "name": "GSU ThingsBoard",
+      "name": "Blood_donar_search_app",
       "createdAt": "2020-03-02T09:42:12Z",
-      "url": "https://github.com/ashwinashok/gsuthingsboard",
-      "description": "This project designs the GSU Thingsboard app which is meant to control, visualize, and collect data from multiple IoT sensors. It provides users with information about how their sensors are performing, the scenarios in which the sensors are producing desired data, any red flags such as device failures, and the activity status of devices all over the internet.",
+      "url": "https://github.com/Saikowshik007/Blood_donar_search_app",
+      "description": null,
       "isFork": false,
-      "youTubeUrl": "https://www.youtube.com/watch?v=osHMsH1yozM",
       "languages": [
         {
-          "name": "FLutter",
-          "iconifyClass": "logos-flutter"
-        },
-        {
-          "name": "Dart",
-          "iconifyClass": "logos-dart"
-        },
-        {
-          "name": "Android",
-          "iconifyClass": "simple-icons:android"
+          "name": "Java",
+          "iconifyClass": "logos-java"
         }
       ]
     },
@@ -28,21 +19,16 @@
       "name": "AI_Job_Predictor",
       "createdAt": "2021-03-01T13:26:24Z",
       "url": "https://github.com/Saikowshik007/AI_Job_Predictor",
-      "description": "This project focuses on predicting suitable jobs for candidates and matching candidates with job requirements using deep neural networks, including CNNs and machine learning algorithms like Logistic Regression with pre-trained word embeddings. The CNN model achieved a high F1-score of 92.5%, and the results are analyzed to explore potential improvements.",
+      "description": null,
       "isFork": false,
-      "youTubeUrl": "https://www.youtube.com/watch?v=BbRpgDzgcj0",
       "languages": [
         {
           "name": "Java",
           "iconifyClass": "logos-java"
         },
         {
-          "name": "Python",
-          "iconifyClass": "logos-python"
-        },
-        {
-          "name": "Android",
-          "iconifyClass": "simple-icons:android"
+          "name": "Jupyter Notebook",
+          "iconifyClass": "logos-jupyter"
         }
       ]
     },
@@ -51,70 +37,12 @@
       "name": "Face-Recognizer",
       "createdAt": "2022-01-09T21:43:29Z",
       "url": "https://github.com/Saikowshik007/Face-Recognizer",
-      "description": "This work introduces a facial recognition system utilizing a one-shot metric approach with a Siamese network architecture, which allows the model to recognize faces using just a single training sample, addressing the challenge of computational expense and difficulty with small datasets by generalizing unrecognized categories without requiring large datasets.",
+      "description": null,
       "isFork": false,
       "languages": [
         {
           "name": "Jupyter Notebook",
           "iconifyClass": "logos-jupyter"
-        },
-        {
-          "name": "Python",
-          "iconifyClass": "logos-python"
-        }
-      ]
-    },
-    {
-      "id": "R_kgDOGpieXw",
-      "name": "Blood donor search App",
-      "createdAt": "2020-01-09T21:43:29Z",
-      "url": "https://github.com/Saikowshik007/Blood_donar_search_app",
-      "description": "The project aims to assist people in urgent need of blood by efficiently connecting them with local donors based on blood groups. Users register in the app, which stores and retrieves data from Firebase. The app periodically checks the user's current location to suggest nearby donors, using threads to prevent UI freezing. It incorporates regex for input validation and displays donor information in a list format using a RecyclerView.",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "Java",
-          "iconifyClass": "logos-java"
-        },
-        {
-          "name": "Android",
-          "iconifyClass": "simple-icons:android"
-        },
-        {
-          "name": "Google Cloud",
-          "iconifyClass": "simple-icons:googlecloud"
-        }
-      ]
-    },
-    {
-      "id": "R_kgDOGpieXw",
-      "name": "Earthquake Damage Predicton",
-      "createdAt": "2023-01-09T21:43:29Z",
-      "url": "https://github.com/Saikowshik007/Earthquake-Damage-Prediction",
-      "description": "The project involves developing a model to predict the damage grade of buildings following the Gorkha Earthquake in Nepal in April 2015, using a large post-disaster dataset. The model classifies the extent of damage into three categories: 1 for low damage, 2 for moderate damage, and 3 for massive destruction.",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "Jupyter Notebook",
-          "iconifyClass": "logos-jupyter"
-        },
-        {
-          "name": "Python",
-          "iconifyClass": "logos-python"
-        }
-      ]
-    },
-    {
-      "id": "R_kgDOGpieXw",
-      "name": "Parkade",
-      "createdAt": "2023-04-09T21:43:29Z",
-      "url": "https://github.com/Saikowshik007/AdvanceSoftwareEngineering",
-      "description": "This project focuses on developing an efficient parking lot management system that handles tasks such as reserving parking spots, managing vehicles by size, ensuring quick service, and charging appropriately. It aims to optimize the allocation and reuse of limited parking space across multiple stories, distribute parking spots based on vehicle size and request priorities, and ensure efficient payment and turnover to maximize resource utilization.",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "Java",
-          "iconifyClass": "logos-java"
         }
       ]
     }

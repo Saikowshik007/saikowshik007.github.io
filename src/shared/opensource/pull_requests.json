@@ -1,5 +1,4 @@
 {
-  "closed": 0,
   "data": [
     {
       "id": "PR_kwDOFKbn9s4yMtx4",
@@ -173,7 +172,8 @@
       }
     }
   ],
-  "merged": 6,
   "open": 1,
+  "closed": 0,
+  "merged": 6,
   "totalCount": 7
 }
